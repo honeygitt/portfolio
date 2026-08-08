@@ -52,7 +52,7 @@ body.is-moving .slide-track {
   width: 100%;
   height: 100vh;
   min-height: 100vh;
-  padding: 24px 86px;
+  padding: 60px 86px;
   overflow: hidden;
   background:
     radial-gradient(circle at 8% 7%, rgba(11, 79, 232, 0.055), transparent 20%),
