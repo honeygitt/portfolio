@@ -94,9 +94,10 @@ function updatePage(index, { animate = true } = {}) {
   });
 
   const pageName = slides[currentIndex].dataset.page;
-  currentPageLabel.textContent = String(currentIndex + 1);
+  const pageNumber = currentIndex + 1;
+  currentPageLabel.textContent = String(pageNumber);
   document.title = `${pageName} · 자동화 프로젝트 포트폴리오`;
-  history.replaceState(null, "", `#page-${pageName}`);
+  history.replaceState(null, "", `#page-${pageNumber}`);
 
   if (animate) {
     isMoving = true;
@@ -183,8 +184,14 @@ function handleTouchEnd(event) {
 
 function getInitialIndex() {
   const hashPage = window.location.hash.replace("#page-", "");
-  const hashIndex = slides.findIndex((slide) => slide.dataset.page === hashPage);
-  return hashIndex >= 0 ? hashIndex : 0;
+  const pageNumber = Number(hashPage);
+
+  if (Number.isInteger(pageNumber) && pageNumber >= 1 && pageNumber <= slides.length) {
+    return pageNumber - 1;
+  }
+
+  const legacyHashIndex = slides.findIndex((slide) => slide.dataset.page === hashPage);
+  return legacyHashIndex >= 0 ? legacyHashIndex : 0;
 }
 
 inventoryFilterButtons.forEach((button) => {
