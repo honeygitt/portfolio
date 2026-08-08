@@ -1,5 +1,5 @@
 const slideTrack = document.querySelector(".slide-track");
-const slideOrder = ["page-00", "page-44", "page-55", "page-11", "page-22", "page-33"];
+const slideOrder = ["page-0", "page-1", "page-2", "page-3", "page-4", "page-5"];
 const slideElements = new Map([...document.querySelectorAll(".slide")].map((slide) => [slide.id, slide]));
 slideOrder.forEach((slideId) => {
   const slide = slideElements.get(slideId);
@@ -7,11 +7,11 @@ slideOrder.forEach((slideId) => {
 });
 const slides = [...slideTrack.querySelectorAll(".slide")];
 const currentPageLabel = document.querySelector(".page-status__current");
-const inventoryTableSource = document.querySelector("#page-55 .compare-panel--after .table-shell--inventory-app");
-const inventoryFilterButtons = [...document.querySelectorAll("#page-55 .filter-chip[data-product-filter]")];
-const inventoryProductRows = [...document.querySelectorAll("#page-55 .inventory-product-row")];
-const inventoryExpiryDetailRow = document.querySelector("#page-55 .expiry-detail-row");
-const inventoryEmptyRow = document.querySelector("#page-55 .inventory-empty-row");
+const inventoryTableSource = document.querySelector("#page-2 .compare-panel--after .table-shell--inventory-app");
+const inventoryFilterButtons = [...document.querySelectorAll("#page-2 .filter-chip[data-product-filter]")];
+const inventoryProductRows = [...document.querySelectorAll("#page-2 .inventory-product-row")];
+const inventoryExpiryDetailRow = document.querySelector("#page-2 .expiry-detail-row");
+const inventoryEmptyRow = document.querySelector("#page-2 .inventory-empty-row");
 
 const TRANSITION_MS = 760;
 const WHEEL_THRESHOLD = 36;
