@@ -268,7 +268,7 @@ body.has-project-expanded .cover h1,
 .project-index__detail-content {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2%;
+  gap: 10%;
   height: auto;
 }
 
