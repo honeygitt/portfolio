@@ -1,225 +1,135 @@
-const slideTrack = document.querySelector(".slide-track");
-const slideOrder = ["page-1", "page-2", "page-3", "page-4", "page-5", "page-6"];
-const slideElements = new Map([...document.querySelectorAll(".slide")].map((slide) => [slide.id, slide]));
-slideOrder.forEach((slideId) => {
-  const slide = slideElements.get(slideId);
-  if (slide) slideTrack.appendChild(slide);
-});
-const slides = [...slideTrack.querySelectorAll(".slide")];
-const currentPageLabel = document.querySelector(".page-status__current");
-const inventoryTableSource = document.querySelector("#page-3 .compare-panel--after .table-shell--inventory-app");
-const inventoryFilterButtons = [...document.querySelectorAll("#page-3 .filter-chip[data-product-filter]")];
-const inventoryProductRows = [...document.querySelectorAll("#page-3 .inventory-product-row")];
-const inventoryExpiryDetailRow = document.querySelector("#page-3 .expiry-detail-row");
-const inventoryEmptyRow = document.querySelector("#page-3 .inventory-empty-row");
+const projectIndex = document.querySelector(".project-index");
+const projectItems = [...document.querySelectorAll(".project-index__item")];
+const projectDetailButtons = [...document.querySelectorAll(".project-index__detail-toggle")];
+const projectDetails = [...document.querySelectorAll(".project-index__detail")];
+const projectDetailCloseButtons = [...document.querySelectorAll(".project-detail-close")];
+const inventoryUi = document.querySelector(".inventory-ui--after");
+const inventoryFilterButtons = [...document.querySelectorAll(".filter-chip[data-product-filter]")];
+const inventoryProductRows = [...document.querySelectorAll(".inventory-product-row")];
+const inventoryExpiryRow = document.querySelector(".expiry-detail-row");
+const inventoryEmptyRow = document.querySelector(".inventory-empty-row");
 
-const TRANSITION_MS = 760;
-const WHEEL_THRESHOLD = 36;
+let activeProjectButton = null;
+let activeProjectCloseButton = null;
+let closeButtonFocusTimer;
+let isInventoryExpiryExpanded = true;
 
-let currentIndex = 0;
-let isMoving = false;
-let wheelAmount = 0;
-let wheelResetTimer;
-let moveUnlockTimer;
-let touchStartY = 0;
-let isInventoryExpiryExpanded = false;
+function updateInventoryExpiryState() {
+  const sunscreenRow = inventoryProductRows.find((row) => row.classList.contains("sunscreen-row"));
+  const toggle = inventoryUi?.querySelector(".inventory-expiry-toggle");
+  const canShow = Boolean(sunscreenRow && !sunscreenRow.hidden);
 
-function updateInventoryExpiryToggle(button, detailRow, isExpanded, canShow = true) {
-  if (!button || !detailRow) return;
-
-  button.setAttribute("aria-expanded", String(isExpanded));
-  button.setAttribute(
+  if (!toggle || !inventoryExpiryRow) return;
+  toggle.setAttribute("aria-expanded", String(isInventoryExpiryExpanded));
+  toggle.setAttribute(
     "aria-label",
-    isExpanded ? "썬크림 유통기한별 재고 숨기기" : "썬크림 유통기한별 재고 펼치기"
+    isInventoryExpiryExpanded ? "썬크림 유통기한별 재고 숨기기" : "썬크림 유통기한별 재고 펼치기"
   );
-  detailRow.hidden = !isExpanded || !canShow;
+  inventoryExpiryRow.hidden = !isInventoryExpiryExpanded || !canShow;
 }
 
 function applyInventoryFilter(filterType) {
-  let visibleProductCount = 0;
+  let visibleCount = 0;
 
   inventoryProductRows.forEach((row) => {
     const isVisible = filterType === "전체" || row.dataset.productType === filterType;
     row.hidden = !isVisible;
-    if (isVisible) visibleProductCount += 1;
+    if (isVisible) visibleCount += 1;
   });
-
-  const sunscreenRow = inventoryProductRows.find((row) => row.classList.contains("sunscreen-row"));
-  const expiryToggle = inventoryTableSource?.querySelector(".inventory-expiry-toggle");
-  updateInventoryExpiryToggle(
-    expiryToggle,
-    inventoryExpiryDetailRow,
-    isInventoryExpiryExpanded,
-    Boolean(sunscreenRow && !sunscreenRow.hidden)
-  );
-
-  if (inventoryEmptyRow) {
-    inventoryEmptyRow.hidden = visibleProductCount > 0;
-  }
 
   inventoryFilterButtons.forEach((button) => {
     const isSelected = button.dataset.productFilter === filterType;
     button.classList.toggle("is-selected", isSelected);
     button.setAttribute("aria-pressed", String(isSelected));
   });
+
+  if (inventoryEmptyRow) inventoryEmptyRow.hidden = visibleCount > 0;
+  updateInventoryExpiryState();
 }
 
-function clampIndex(index) {
-  return Math.max(0, Math.min(index, slides.length - 1));
+function setProjectDetailState(button, isExpanded) {
+  const item = button.closest(".project-index__item");
+  const detail = document.getElementById(button.getAttribute("aria-controls"));
+
+  button.setAttribute("aria-expanded", String(isExpanded));
+  item?.classList.toggle("is-expanded", isExpanded);
+  detail?.classList.toggle("is-expanded", isExpanded);
+  detail?.setAttribute("aria-hidden", String(!isExpanded));
 }
 
-function updateTrackPosition() {
-  slideTrack.style.transform = `translate3d(0, ${currentIndex * -window.innerHeight}px, 0)`;
-}
+function closeProjectDetails({ restoreFocus = true } = {}) {
+  if (!activeProjectButton) return false;
 
-function updatePage(index, { animate = true } = {}) {
-  const nextIndex = clampIndex(index);
+  const buttonToFocus = activeProjectButton;
+  clearTimeout(closeButtonFocusTimer);
+  setProjectDetailState(activeProjectButton, false);
 
-  if (nextIndex === currentIndex && animate) {
-    return false;
-  }
-
-  if (animate) {
-    document.body.classList.add("is-moving");
-    slideTrack.getBoundingClientRect();
-  }
-
-  currentIndex = nextIndex;
-  updateTrackPosition();
-
-  slides.forEach((slide, slideIndex) => {
-    const isActive = slideIndex === currentIndex;
-    slide.classList.toggle("is-active", isActive);
-    slide.setAttribute("aria-hidden", String(!isActive));
+  projectItems.forEach((item) => {
+    item.classList.remove("is-moving-up", "is-moving-down");
   });
+  projectDetails.forEach((detail) => detail.classList.remove("is-expanded"));
+  projectIndex?.classList.remove("has-expanded");
+  document.body.classList.remove("has-project-expanded");
 
-  const pageName = slides[currentIndex].dataset.page;
-  const pageNumber = currentIndex + 1;
-  currentPageLabel.textContent = String(pageNumber);
-  document.title = `${pageName} · 자동화 프로젝트 포트폴리오`;
-  history.replaceState(null, "", `#page-${pageNumber}`);
+  activeProjectButton = null;
+  activeProjectCloseButton = null;
 
-  if (animate) {
-    isMoving = true;
-    clearTimeout(moveUnlockTimer);
-    moveUnlockTimer = window.setTimeout(() => {
-      isMoving = false;
-      document.body.classList.remove("is-moving");
-    }, TRANSITION_MS + 100);
-  }
-
-  if (animate) {
-    document.body.classList.add("has-interacted");
-  }
+  if (restoreFocus) buttonToFocus.focus({ preventScroll: true });
   return true;
 }
 
-function moveBy(direction) {
-  if (isMoving) return;
-  updatePage(currentIndex + direction);
-}
+function openProjectDetails(button) {
+  const activeIndex = projectDetailButtons.indexOf(button);
+  if (activeIndex < 0) return;
 
-function handleWheel(event) {
-  event.preventDefault();
+  if (activeProjectButton) closeProjectDetails({ restoreFocus: false });
+  activeProjectButton = button;
+  activeProjectCloseButton = document
+    .getElementById(button.getAttribute("aria-controls"))
+    ?.querySelector(".project-detail-close");
 
-  if (isMoving) {
-    wheelAmount = 0;
-    return;
-  }
+  projectItems.forEach((item, index) => {
+    item.classList.toggle("is-moving-up", index <= activeIndex);
+    item.classList.toggle("is-moving-down", index > activeIndex);
+  });
 
-  wheelAmount += event.deltaY;
-  clearTimeout(wheelResetTimer);
-  wheelResetTimer = window.setTimeout(() => {
-    wheelAmount = 0;
-  }, 140);
+  setProjectDetailState(button, true);
+  projectIndex?.classList.add("has-expanded");
+  document.body.classList.add("has-project-expanded");
 
-  if (Math.abs(wheelAmount) < WHEEL_THRESHOLD) return;
-
-  const direction = wheelAmount > 0 ? 1 : -1;
-  wheelAmount = 0;
-  moveBy(direction);
-}
-
-function handleKeydown(event) {
-  const isInteractiveElement = event.target.closest("button, a, input, select, textarea");
-
-  if (isInteractiveElement) return;
-
-  const nextKeys = ["ArrowDown", "PageDown"];
-  const previousKeys = ["ArrowUp", "PageUp"];
-
-  if (nextKeys.includes(event.key) || (event.key === " " && !event.shiftKey)) {
-    event.preventDefault();
-    moveBy(1);
-    return;
-  }
-
-  if (previousKeys.includes(event.key) || (event.key === " " && event.shiftKey)) {
-    event.preventDefault();
-    moveBy(-1);
-    return;
-  }
-
-  if (event.key === "Home") {
-    event.preventDefault();
-    updatePage(0);
-  }
-
-  if (event.key === "End") {
-    event.preventDefault();
-    updatePage(slides.length - 1);
+  if (activeProjectCloseButton) {
+    const focusDelay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 520;
+    closeButtonFocusTimer = window.setTimeout(() => {
+      activeProjectCloseButton?.focus({ preventScroll: true });
+    }, focusDelay);
   }
 }
 
-function handleTouchStart(event) {
-  touchStartY = event.changedTouches[0].clientY;
-}
+projectDetailButtons.forEach((button) => {
+  button.addEventListener("click", () => openProjectDetails(button));
+});
 
-function handleTouchEnd(event) {
-  const distance = touchStartY - event.changedTouches[0].clientY;
-
-  if (Math.abs(distance) < 45) return;
-  moveBy(distance > 0 ? 1 : -1);
-}
-
-function getInitialIndex() {
-  const hashPage = window.location.hash.replace("#page-", "");
-  const pageNumber = Number(hashPage);
-
-  if (Number.isInteger(pageNumber) && pageNumber >= 1 && pageNumber <= slides.length) {
-    return pageNumber - 1;
-  }
-
-  const legacyHashIndex = slides.findIndex((slide) => slide.dataset.page === hashPage);
-  return legacyHashIndex >= 0 ? legacyHashIndex : 0;
-}
+projectDetailCloseButtons.forEach((button) => {
+  button.addEventListener("click", () => closeProjectDetails());
+});
 
 inventoryFilterButtons.forEach((button) => {
   button.addEventListener("click", () => applyInventoryFilter(button.dataset.productFilter));
 });
-document.addEventListener("click", (event) => {
-  const toggleButton = event.target.closest(".inventory-expiry-toggle");
-  if (!toggleButton) return;
 
-  const tableShell = toggleButton.closest(".table-shell--inventory-app");
-  const detailRow = tableShell?.querySelector(".expiry-detail-row");
-  const nextExpandedState = toggleButton.getAttribute("aria-expanded") !== "true";
-
-  if (tableShell === inventoryTableSource) {
-    isInventoryExpiryExpanded = nextExpandedState;
-  }
-
-  updateInventoryExpiryToggle(toggleButton, detailRow, nextExpandedState);
+inventoryUi?.querySelector(".inventory-expiry-toggle")?.addEventListener("click", () => {
+  isInventoryExpiryExpanded = !isInventoryExpiryExpanded;
+  updateInventoryExpiryState();
 });
 
-window.addEventListener("wheel", handleWheel, { passive: false });
-window.addEventListener("keydown", handleKeydown);
-window.addEventListener("touchstart", handleTouchStart, { passive: true });
-window.addEventListener("touchend", handleTouchEnd, { passive: true });
-window.addEventListener("resize", updateTrackPosition);
+window.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  if (closeProjectDetails()) event.preventDefault();
+});
+
+if (window.location.hash) {
+  history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+}
 
 applyInventoryFilter("전체");
-
-updatePage(getInitialIndex(), { animate: false });
-slideTrack.getBoundingClientRect();
 window.setTimeout(() => document.body.classList.add("is-ready"), 100);

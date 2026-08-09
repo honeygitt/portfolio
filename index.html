@@ -8,301 +8,266 @@
       content="직접 기획하고 구현한 자동화 및 효율화 프로젝트 포트폴리오"
     />
     <title>자동화 프로젝트 포트폴리오</title>
-    <link rel="stylesheet" href="style.css?v=20260809-1" />
-    <script src="script.js?v=20260809-2" defer></script>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="style.css?v=20260809-22" />
+    <script src="script.js?v=20260809-11" defer></script>
   </head>
 
   <body>
     <main class="portfolio" aria-live="polite">
       <div class="slide-track">
-        <section class="slide slide--cover is-active" id="page-1" data-page="1" aria-label="표지">
+        <section class="slide slide--cover is-active" id="page-1" aria-label="자동화 프로젝트 목록">
           <div class="slide__content cover">
-            <div class="cover__intro">
-              <h1>
-                <span>직접 기획하고 구현한</span>
-                <strong>자동화 <i>&amp;</i> 효율화 <br class="mobile-only" />프로젝트</strong>
-              </h1>
-            </div>
+            <h1>기획&amp;진행 프로젝트</h1>
 
             <ol class="project-index" aria-label="프로젝트 목록">
-              <li><span>01</span><div><strong>매출 집계</strong></div></li>
-              <li><span>02</span><div><strong>재고·발주 자동화</strong></div></li>
-              <li><span>03</span><div><strong>카페24 퍼블리싱 자동화</strong></div></li>
-              <li><span>04</span><div><strong>카페24 리뷰 앱 개발</strong></div></li>
-              <li><span>05</span><div><strong>업무 프로세스 개선</strong></div></li>
+              <li class="project-index__item">
+                <div class="project-index__row">
+                  <strong>매출 집계</strong>
+                  <span class="project-index__tags">#매출데이터 #통합집계 #비용절감</span>
+                  <button id="project-toggle-1" class="project-index__detail-toggle" type="button" aria-expanded="false" aria-controls="project-detail-1">자세히</button>
+                </div>
+              </li>
+              <li class="project-index__item">
+                <div class="project-index__row">
+                  <strong>재고·발주 자동화</strong>
+                  <span class="project-index__tags">#재고관리 #발주판단 #업무자동화</span>
+                  <button id="project-toggle-2" class="project-index__detail-toggle" type="button" aria-expanded="false" aria-controls="project-detail-2">자세히</button>
+                </div>
+              </li>
+              <li class="project-index__item">
+                <div class="project-index__row">
+                  <strong>카페24 UI/UX 수정 자동화</strong>
+                  <span class="project-index__tags">#CAFE24 #UIUX #업무자동화</span>
+                  <button id="project-toggle-3" class="project-index__detail-toggle" type="button" aria-expanded="false" aria-controls="project-detail-3">자세히</button>
+                </div>
+              </li>
+              <li class="project-index__item">
+                <div class="project-index__row">
+                  <strong>카페24 리뷰 앱</strong>
+                  <span class="project-index__tags">#CAFE24 #앱개발 #UIUX</span>
+                  <button id="project-toggle-4" class="project-index__detail-toggle" type="button" aria-expanded="false" aria-controls="project-detail-4">자세히</button>
+                </div>
+              </li>
+              <li class="project-index__item">
+                <div class="project-index__row">
+                  <strong>업무 프로세스 개선</strong>
+                  <span class="project-index__tags">#데이터수집 #UIUX #업무효율화</span>
+                  <button id="project-toggle-5" class="project-index__detail-toggle" type="button" aria-expanded="false" aria-controls="project-detail-5">자세히</button>
+                </div>
+              </li>
             </ol>
           </div>
-        </section>
 
-                <section class="slide" id="page-2" data-page="2" aria-label="매출 집계">
-          <div class="slide__content">
-            <header class="slide-heading">
-              <h2>매출 집계</h2>
-            </header>
-
-            <div class="comparison comparison--list">
-              <article class="compare-panel compare-panel--before numbered-panel">
-                <span class="panel-badge">Before</span>
-                <ol class="numbered-list standard-number-list">
-                  <li><div><h3>데이터 신뢰성 부족</h3><p>매출 집계 서비스마다 금액이 달라 실제 매출 판단이 어려움</p><p>A 집계 서비스 : 780만원 / B 집계 서비스 : 745만원</p></div></li>
-                  <li><div><h3>반영 기준 불명확</h3><p>수수료·쿠폰·포인트 반영 금액을 확인하기 어려움</p></div></li>
-                  <li><div><h3>수익 구조 파악 어려움</h3><p>원가 차감 후 최종적으로 남는 금액을 알기 어려움</p></div></li>
-                  <li><div><h3>고정 비용 발생</h3><p>외부 서비스 이용 비용 월 10만원 발생</p></div></li>
-                </ol>
-              </article>
-
-              <div class="change-arrow" aria-hidden="true"><span><img src="arrow.png" alt="" /></span></div>
-
-              <article class="compare-panel compare-panel--after numbered-panel">
-                <span class="panel-badge">After</span>
-                <ol class="numbered-list standard-number-list">
-                  <li><div><h3>통합 집계 정확도 개선</h3><p>오차율 1% 이내로 관리</p></div></li>
-                  <li><div><h3>실제 매출 자동 반영</h3><p>각종 수수료·쿠폰·포인트 금액까지 정확하게 반영</p></div></li>
-                  <li><div><h3>수익 구조 가시화</h3><p>제품 원가,각종 경비 제외한 월별 최종 영업이익 확인 가능</p></div></li>
-                  <li><div><h3>비용 절감</h3><p>월 10만원 <img class="inline-arrow-icon" src="arrow.png" alt="에서" /> 0원</p></div></li>
-                </ol>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="slide" id="page-3" data-page="3" aria-label="재고·발주 자동화">
-          <div class="slide__content">
-            <header class="slide-heading">
-              <h2>재고·발주 자동화</h2>
-            </header>
-
-            <div class="comparison">
-              <article class="compare-panel compare-panel--before inventory-panel">
-                <span class="panel-badge">Before</span>
-                <div class="table-shell">
-                  <table>
-                    <thead><tr><th>제품명</th><th>바코드</th><th>유통기한</th><th>총 재고</th><th>가용</th><th>불용</th></tr></thead>
-                    <tbody>
-                      <tr><td>썬크림</td><td>8800000197456</td><td>2027-09-07</td><td>1,571</td><td>1,552</td><td>19</td></tr>
-                      <tr><td>썬크림</td><td>8800000197456</td><td>2028-12-10</td><td>5,000</td><td>5,000</td><td>0</td></tr>
-                      <tr><td>스킨</td><td>8800000197846</td><td>2028-10-04</td><td>2,485</td><td>2,485</td><td>0</td></tr>
-                      <tr><td>파우더</td><td>8800000199135</td><td>2029-08-08</td><td>2,061</td><td>2,049</td><td>12</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="problem-box">
-                  <ol class="point-list point-list--compact standard-number-list"><li>발주 여부를 담당자가 직접 판단</li><li>판매량을 별도로 확인해야 함</li></ol>
-                </div>
-              </article>
-
-              <div class="change-arrow" aria-hidden="true"><span><img src="arrow.png" alt="" /></span></div>
-
-              <article class="compare-panel compare-panel--after inventory-panel">
-                <span class="panel-badge">After</span>
-                <div class="inventory-filters" aria-label="제품 필터">
-                  <div class="filter-group">
-                    <b>제품 유형</b>
-                    <button type="button" class="filter-chip is-selected" data-product-filter="전체" aria-pressed="true">전체</button>
-                    <button type="button" class="filter-chip" data-product-filter="본품" aria-pressed="false">본품</button>
-                    <button type="button" class="filter-chip" data-product-filter="사은품" aria-pressed="false">사은품</button>
-                    <button type="button" class="filter-chip" data-product-filter="기타" aria-pressed="false">기타</button>
+          <div id="project-detail-1" class="project-index__detail" role="region" aria-labelledby="project-toggle-1" aria-hidden="true">
+            <div class="project-index__detail-inner">
+              <header class="project-index__detail-heading">
+                <div class="project-index__detail-title"><strong>매출 집계</strong></div>
+                <div class="project-index__detail-actions"><button class="project-detail-close" type="button" aria-label="매출 집계 상세 내용 닫기">닫기<span class="project-detail-close-key" aria-hidden="true">(ESC)</span></button></div>
+              </header>
+              <div class="project-index__detail-content">
+                <section class="project-index__state">
+                  <div class="project-index__state-panel project-index__state-panel--before">
+                    <h2 class="project-index__state-label">BEFORE</h2>
+                    <ol class="numbered-list">
+                      <li><div><h3>데이터 신뢰성 부족</h3><p>매출 집계 서비스마다 금액이 달라 실제 매출 판단이 어려움</p><p> 예) A 집계 서비스 780만원 / B 집계 서비스 745만원</p></div></li>
+                      <li><div><h3>반영 기준 불명확</h3><p>수수료·쿠폰·포인트 반영 금액을 확인하기 어려움</p></div></li>
+                      <li><div><h3>수익 구조 파악 어려움</h3><p>원가 차감 후 최종적으로 남는 금액을 알기 어려움</p></div></li>
+                      <li><div><h3>고정 비용 발생</h3><p>외부 서비스 이용 비용 월 10만원 발생</p></div></li>
+                    </ol>
                   </div>
-                </div>
-                <div class="table-shell table-shell--inventory-app">
-                  <table>
-                      <colgroup>
-                        <col class="product-column" />
-                        <col class="type-column" />
-                        <col class="stock-column" />
-                        <col class="order-column" />
-                        <col class="order-state-column" />
-                        <col class="sales-column" />
-                        <col class="toggle-column" />
-                    </colgroup>
-                    <thead>
-                      <tr><th>제품명</th><th>제품 유형</th><th>재고 수량</th><th>발주기준</th><th>발주 필요</th><th>판매량</th><th aria-label="상세 보기"></th></tr>
-                    </thead>
-                    <tbody>
-                      <tr class="sunscreen-row inventory-product-row" data-product-type="본품">
-                        <td><div class="product-cell"><img src="썬크림.png" alt="썬크림 제품 썸네일" /><strong>썬크림</strong></div></td>
-                        <td><span class="product-type">본품</span></td><td><strong>6,571</strong></td><td>500</td><td><span class="order-state">-</span></td>
-                        <td><div class="sales-periods"><span><small>1일</small><b>24</b></span><span><small>7일</small><b>168</b></span></div></td>
-                        <td class="inventory-toggle-cell"><button type="button" class="inventory-expiry-toggle" aria-expanded="false" aria-label="썬크림 유통기한별 재고 펼치기"><span aria-hidden="true"></span></button></td>
-                      </tr>
-                      <tr class="expiry-detail-row" hidden>
-                        <td colspan="7">
-                          <div class="expiry-detail">
-                            <table>
-                              <thead><tr><th>유통기한</th><th>총 재고</th><th>가용</th><th>불용</th></tr></thead>
-                              <tbody><tr><td>2027-09-07</td><td>1,571</td><td>1,552</td><td>19</td></tr><tr><td>2028-12-10</td><td>5,000</td><td>5,000</td><td>0</td></tr></tbody>
-                            </table>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr class="inventory-product-row" data-product-type="본품">
-                        <td><div class="product-cell"><img src="스킨.png" alt="스킨 제품 썸네일" /><strong>스킨</strong></div></td>
-                        <td><span class="product-type">본품</span></td><td><strong>2,485</strong></td><td>600</td><td><span class="order-state">-</span></td>
-                        <td><div class="sales-periods"><span><small>1일</small><b>31</b></span><span><small>7일</small><b>214</b></span></div></td>
-                        <td class="inventory-toggle-cell"></td>
-                      </tr>
-                      <tr class="inventory-product-row" data-product-type="본품">
-                        <td><div class="product-cell"><img src="파우더.png" alt="파우더 제품 썸네일" /><strong>파우더</strong></div></td>
-                        <td><span class="product-type">본품</span></td><td><strong>2,061</strong></td><td>800</td><td><span class="order-state">-</span></td>
-                        <td><div class="sales-periods"><span><small>1일</small><b>27</b></span><span><small>7일</small><b>189</b></span></div></td>
-                        <td class="inventory-toggle-cell"></td>
-                      </tr>
-                      <tr class="inventory-product-row" data-product-type="사은품">
-                        <td><div class="product-cell"><img src="쇼핑백.png" alt="쇼핑백 제품 썸네일" /><strong>쇼핑백</strong></div></td>
-                        <td><span class="product-type">사은품</span></td><td><strong>120</strong></td><td>200</td><td><span class="order-state need-order">필요</span></td>
-                        <td><div class="sales-periods"><span><small>1일</small><b>8</b></span><span><small>7일</small><b>54</b></span></div></td>
-                        <td class="inventory-toggle-cell"></td>
-                      </tr>
-                      <tr class="inventory-empty-row" hidden><td colspan="7">해당 유형의 제품이 없습니다.</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="effect-box">
-                  <ol class="point-list point-list--compact standard-number-list">
-                    <li><h3>발주 필요 여부를 즉시 판단</h3></li>
-                    <li><h3>재고 / 기간별 판매량을 한 번에 파악 가능</h3></li>
-                  </ol>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="slide" id="page-4" data-page="4" aria-label="카페24 퍼블리싱 자동화">
-          <div class="slide__content">
-            <header class="slide-heading">
-              <h2>카페24 퍼블리싱 자동화</h2>
-            </header>
-
-            <div class="comparison project-01-comparison">
-              <article class="compare-panel compare-panel--before project-01-panel">
-                <span class="panel-badge">Before</span>
-
-                <div class="project-01-before-stage">
-                  <div class="site-grid" aria-label="기존 계정별 사이트 관리">
-                    <div class="site-card"><div class="site-card__account"><b>계정 A</b><div class="site-card__sites"><span>1.테스트 사이트</span><span>2.운영 사이트</span></div></div><span class="before-code-arrow" aria-hidden="true"><img src="arrow.png" alt="" /></span><div class="flow-step before-code-change"><div class="code-icon" aria-hidden="true"><i></i><i></i><i></i></div><p><strong>코드 2번 수정</strong></p></div></div>
-                    <div class="site-card"><div class="site-card__account"><b>계정 B</b><div class="site-card__sites"><span>1.테스트 사이트</span><span>2.운영 사이트</span></div></div><span class="before-code-arrow" aria-hidden="true"><img src="arrow.png" alt="" /></span><div class="flow-step before-code-change"><div class="code-icon" aria-hidden="true"><i></i><i></i><i></i></div><p><strong>코드 2번 수정</strong></p></div></div>
-                    <div class="site-card"><div class="site-card__account"><b>계정 C</b><div class="site-card__sites"><span>1.테스트 사이트</span><span>2.운영 사이트</span></div></div><span class="before-code-arrow" aria-hidden="true"><img src="arrow.png" alt="" /></span><div class="flow-step before-code-change"><div class="code-icon" aria-hidden="true"><i></i><i></i><i></i></div><p><strong>코드 2번 수정</strong></p></div></div>
-                    <div class="site-card"><div class="site-card__account"><b>계정 D</b><div class="site-card__sites"><span>1.테스트 사이트</span><span>2.운영 사이트</span></div></div><span class="before-code-arrow" aria-hidden="true"><img src="arrow.png" alt="" /></span><div class="flow-step before-code-change"><div class="code-icon" aria-hidden="true"><i></i><i></i><i></i></div><p><strong>코드 2번 수정</strong></p></div></div>
-                    <div class="site-card"><div class="site-card__account"><b>계정 E</b><div class="site-card__sites"><span>1.테스트 사이트</span><span>2.운영 사이트</span></div></div><span class="before-code-arrow" aria-hidden="true"><img src="arrow.png" alt="" /></span><div class="flow-step before-code-change"><div class="code-icon" aria-hidden="true"><i></i><i></i><i></i></div><p><strong>코드 2번 수정</strong></p></div></div>
+                </section>
+                <section class="project-index__state">
+                  <div class="project-index__state-panel project-index__state-panel--after">
+                    <h2 class="project-index__state-label">AFTER</h2>
+                    <ol class="numbered-list">
+                      <li><div><h3>통합 집계 정확도 개선</h3><p>오차율 1% 이내로 관리</p></div></li>
+                      <li><div><h3>실제 매출 자동 반영</h3><p>수수료·쿠폰·포인트 금액까지 정확하게 반영</p></div></li>
+                      <li><div><h3>수익 구조 가시화</h3><p>제품 원가와 경비를 제외한 월별 최종 영업이익 확인</p></div></li>
+                      <li><div><h3>비용 절감</h3><p>월 10만원에서 0원으로 절감</p></div></li>
+                    </ol>
                   </div>
-                </div>
+                </section>
+              </div>
+            </div>
+          </div>
 
-                <ol class="point-list point-list--compact standard-number-list">
-                  <li>UI/UX 1건 변경 시 10회 반복 수정</li>
-                  <li>수정 누락과 오적용 위험, 복잡한 현황 관리</li>
-                </ol>
-              </article>
-
-              <div class="change-arrow" aria-hidden="true"><span><img src="arrow.png" alt="" /></span></div>
-
-              <article class="compare-panel compare-panel--after project-01-panel">
-                <span class="panel-badge">After</span>
-
-                <div class="automation-flow">
-                  <div class="flow-step">
-                    <div class="code-icon"><i></i><i></i><i></i></div>
-                    <p><strong>코드 1회 수정</strong></p>
+          <div id="project-detail-2" class="project-index__detail" role="region" aria-labelledby="project-toggle-2" aria-hidden="true">
+            <div class="project-index__detail-inner">
+              <header class="project-index__detail-heading">
+                <div class="project-index__detail-title"><strong>재고·발주 자동화</strong></div>
+                <div class="project-index__detail-actions"><button class="project-detail-close" type="button" aria-label="재고·발주 자동화 상세 내용 닫기">닫기<span class="project-detail-close-key" aria-hidden="true">(ESC)</span></button></div>
+              </header>
+              <div class="project-index__detail-content">
+                <section class="project-index__state">
+                  <div class="project-index__state-panel project-index__state-panel--before">
+                    <h2 class="project-index__state-label">BEFORE</h2>
+                    <div class="inventory-ui inventory-ui--before">
+                      <div class="table-shell">
+                        <table>
+                          <thead><tr><th>제품명</th><th>바코드</th><th>유통기한</th><th>총 재고</th><th>가용</th><th>불용</th></tr></thead>
+                          <tbody>
+                            <tr><td>썬크림</td><td>8800000197456</td><td>2027-09-07</td><td>1,571</td><td>1,552</td><td>19</td></tr>
+                            <tr><td>썬크림</td><td>8800000197456</td><td>2028-12-10</td><td>5,000</td><td>5,000</td><td>0</td></tr>
+                            <tr><td>스킨</td><td>8800000197846</td><td>2028-10-04</td><td>2,485</td><td>2,485</td><td>0</td></tr>
+                            <tr><td>파우더</td><td>8800000199135</td><td>2029-08-08</td><td>2,061</td><td>2,049</td><td>12</td></tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <ol class="ui-note-list ui-note-list--numbered"><li>발주 여부를 담당자가 직접 계산하여 판단</li><li>판매량을 별도로 확인해야 함</li></ol>
+                    </div>
                   </div>
-                  <span class="flow-line" aria-hidden="true"><img src="arrow.png" alt="" /></span>
-                  <div class="flow-step">
-                    <div class="terminal-icon">&gt;_</div>
-                    <p><strong>명령어로 일괄 수정</strong><span></span></p>
+                </section>
+                <section class="project-index__state">
+                  <div class="project-index__state-panel project-index__state-panel--after">
+                    <h2 class="project-index__state-label">AFTER</h2>
+                    <div class="inventory-ui inventory-ui--after">
+                      <div class="inventory-filters" aria-label="제품 필터">
+                        <strong>제품 유형</strong>
+                        <button type="button" class="filter-chip is-selected" data-product-filter="전체" aria-pressed="true">전체</button>
+                        <button type="button" class="filter-chip" data-product-filter="본품" aria-pressed="false">본품</button>
+                        <button type="button" class="filter-chip" data-product-filter="사은품" aria-pressed="false">사은품</button>
+                        <button type="button" class="filter-chip" data-product-filter="기타" aria-pressed="false">기타</button>
+                      </div>
+                      <div class="table-shell table-shell--inventory-app">
+                        <table>
+                          <thead><tr><th>제품명</th><th>유형</th><th>재고</th><th>발주기준</th><th>발주</th><th>판매량</th><th aria-label="상세 보기"></th></tr></thead>
+                          <tbody>
+                            <tr class="inventory-product-row sunscreen-row" data-product-type="본품">
+                              <td><div class="product-cell"><img src="썬크림.png" alt="썬크림" /><strong>썬크림</strong></div></td><td><span class="product-type">본품</span></td><td><strong>6,571</strong></td><td>500</td><td><span class="order-state">-</span></td><td><div class="sales-periods"><span><small>1일</small><b>24</b></span><span><small>7일</small><b>168</b></span></div></td><td><button type="button" class="inventory-expiry-toggle" aria-expanded="true" aria-label="썬크림 유통기한별 재고 숨기기"><span aria-hidden="true"></span></button></td>
+                            </tr>
+                            <tr class="expiry-detail-row"><td colspan="7"><div class="expiry-detail"><table><thead><tr><th>유통기한</th><th>총 재고</th><th>가용</th><th>불용</th></tr></thead><tbody><tr><td>2027-09-07</td><td>1,571</td><td>1,552</td><td>19</td></tr><tr><td>2028-12-10</td><td>5,000</td><td>5,000</td><td>0</td></tr></tbody></table></div></td></tr>
+                            <tr class="inventory-product-row" data-product-type="본품"><td><div class="product-cell"><img src="스킨.png" alt="스킨" /><strong>스킨</strong></div></td><td><span class="product-type">본품</span></td><td><strong>2,485</strong></td><td>600</td><td><span class="order-state">-</span></td><td><div class="sales-periods"><span><small>1일</small><b>31</b></span><span><small>7일</small><b>214</b></span></div></td><td></td></tr>
+                            <tr class="inventory-product-row" data-product-type="본품"><td><div class="product-cell"><img src="파우더.png" alt="파우더" /><strong>파우더</strong></div></td><td><span class="product-type">본품</span></td><td><strong>2,061</strong></td><td>800</td><td><span class="order-state">-</span></td><td><div class="sales-periods"><span><small>1일</small><b>27</b></span><span><small>7일</small><b>189</b></span></div></td><td></td></tr>
+                            <tr class="inventory-product-row" data-product-type="사은품"><td><div class="product-cell"><img src="쇼핑백.png" alt="쇼핑백" /><strong>쇼핑백</strong></div></td><td><span class="product-type">사은품</span></td><td><strong>120</strong></td><td>200</td><td><span class="order-state need-order">필요</span></td><td><div class="sales-periods"><span><small>1일</small><b>8</b></span><span><small>7일</small><b>54</b></span></div></td><td></td></tr>
+                            <tr class="inventory-empty-row" hidden><td colspan="7">해당 유형의 제품이 없습니다.</td></tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <ol class="ui-note-list ui-note-list--numbered"><li>발주 필요 여부를 자동으로 판단</li><li>재고와 기간별 판매량을 한 번에 파악</li></ol>
+                    </div>
                   </div>
-                  <span class="flow-line" aria-hidden="true"><img src="arrow.png" alt="" /></span>
-                </div>
+                </section>
+              </div>
+            </div>
+          </div>
 
-                <div class="site-grid" aria-label="일괄 반영되는 계정별 사이트">
-                  <div class="site-card"><b>계정 A</b><div class="site-card__sites"><span>1.테스트 사이트</span><span>2.운영 사이트</span></div></div>
-                  <div class="site-card"><b>계정 B</b><div class="site-card__sites"><span>1.테스트 사이트</span><span>2.운영 사이트</span></div></div>
-                  <div class="site-card"><b>계정 C</b><div class="site-card__sites"><span>1.테스트 사이트</span><span>2.운영 사이트</span></div></div>
-                  <div class="site-card"><b>계정 D</b><div class="site-card__sites"><span>1.테스트 사이트</span><span>2.운영 사이트</span></div></div>
-                  <div class="site-card"><b>계정 E</b><div class="site-card__sites"><span>1.테스트 사이트</span><span>2.운영 사이트</span></div></div>
-                </div>
+          <div id="project-detail-3" class="project-index__detail" role="region" aria-labelledby="project-toggle-3" aria-hidden="true">
+            <div class="project-index__detail-inner">
+              <header class="project-index__detail-heading">
+                <div class="project-index__detail-title"><strong>카페24 UI/UX 수정 자동화</strong></div>
+                <div class="project-index__detail-actions"><button class="project-detail-close" type="button" aria-label="카페24 UI/UX 수정 자동화 상세 내용 닫기">닫기<span class="project-detail-close-key" aria-hidden="true">(ESC)</span></button></div>
+              </header>
+              <div class="project-index__detail-content">
+                <section class="project-index__state">
+                  <div class="project-index__state-panel project-index__state-panel--before">
+                    <h2 class="project-index__state-label">BEFORE</h2>
+                    <div class="publishing-ui publishing-ui--before">
+                      <div class="site-grid" aria-label="기존 계정별 사이트 관리">
+                        <div class="site-card"><b>계정 A</b><span>테스트 사이트</span><span>운영 사이트</span><small>코드 2번 수정</small></div>
+                        <div class="site-card"><b>계정 B</b><span>테스트 사이트</span><span>운영 사이트</span><small>코드 2번 수정</small></div>
+                        <div class="site-card"><b>계정 C</b><span>테스트 사이트</span><span>운영 사이트</span><small>코드 2번 수정</small></div>
+                        <div class="site-card"><b>계정 D</b><span>테스트 사이트</span><span>운영 사이트</span><small>코드 2번 수정</small></div>
+                        <div class="site-card"><b>계정 E</b><span>테스트 사이트</span><span>운영 사이트</span><small>코드 2번 수정</small></div>
+                      </div>
+                      <ol class="ui-note-list ui-note-list--numbered"><li>UI/UX 1건 변경 시 10회 반복 수정</li><li>수정 누락과 오적용 위험</li></ol>
+                    </div>
+                  </div>
+                </section>
+                <section class="project-index__state">
+                  <div class="project-index__state-panel project-index__state-panel--after">
+                    <h2 class="project-index__state-label">AFTER</h2>
+                    <div class="publishing-ui publishing-ui--after">
+                      <div class="automation-flow automation-flow--paired">
+                        <div class="flow-step"><span class="code-icon" aria-hidden="true"><i></i><i></i><i></i></span><strong>코드 1회 수정</strong></div>
+                        <span class="flow-connector" aria-hidden="true">→</span>
+                        <div class="flow-step"><span class="terminal-icon" aria-hidden="true">&gt;_</span><strong>명령어 1번 입력</strong></div>
+                      </div>
+                      <span class="automation-flow__down automation-flow__down--diagonal" aria-hidden="true">↓</span>
+                      <div class="automation-flow automation-flow--paired">
+                        <div class="site-card site-card--account-row" aria-label="테스트 사이트 반영 계정">
+                          <span>테스트 사이트 일괄 적용</span>
+                          <div class="site-card__accounts"><b>계정 A</b><b>계정 B</b><b>계정 C</b><b>계정 D</b><b>계정 E</b></div>
+                        </div>
+                        <span class="flow-connector" aria-hidden="true">→</span>
+                        <div class="flow-step"><span class="terminal-icon" aria-hidden="true">&gt;_</span><strong>명령어 입력</strong></div>
+                      </div>
+                      <span class="automation-flow__down" aria-hidden="true">↓</span>
+                      <div class="automation-flow automation-flow--last">
+                        <div class="site-card site-card--account-row" aria-label="운영 사이트 반영 계정">
+                          <span>운영 사이트 일괄 적용</span>
+                          <div class="site-card__accounts"><b>계정 A</b><b>계정 B</b><b>계정 C</b><b>계정 D</b><b>계정 E</b></div>
+                        </div>
+                      </div>
+                      <ol class="ui-note-list ui-note-list--numbered">
+                        <li>코드 1회 수정과 명령어 2번만으로 일괄 적용</li>
+                        <li>60분 업무를 10분내로 단축</li>
+                        <li>오적용,누락 위험성 감소</li>
+                      </ol>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
 
-                <ol class="result-notes standard-number-list">
-                  <li class="result-note"><div><h3>코드 1회 수정만으로 10개 모두 변경</h3></div></li>
-                  <li class="result-note"><div><h3>빠르고 정확한 업무 진행</h3></div></li>
-                </ol>
-              </article>
+          <div id="project-detail-4" class="project-index__detail" role="region" aria-labelledby="project-toggle-4" aria-hidden="true">
+            <div class="project-index__detail-inner">
+              <header class="project-index__detail-heading">
+                <div class="project-index__detail-title"><strong>카페24 리뷰 앱</strong></div>
+                <div class="project-index__detail-actions"><button class="project-detail-close" type="button" aria-label="카페24 리뷰 앱 상세 내용 닫기">닫기<span class="project-detail-close-key" aria-hidden="true">(ESC)</span></button></div>
+              </header>
+              <div class="project-index__detail-content">
+                <section class="project-index__state">
+                  <div class="project-index__state-panel project-index__state-panel--before">
+                    <h2 class="project-index__state-label">BEFORE</h2>
+                    <ol class="impact-list"><li><span>01</span><div class="impact-list__content"><h3>리뷰 앱 이용료 월 약 50만원</h3><p>계정별 총 10만원 * 계정 5개</p></div></li><li><span>02</span><h3>다수의 계정 리뷰를 따로 관리해야 하는 번거로움</h3></li></ol>
+                  </div>
+                </section>
+                <section class="project-index__state">
+                  <div class="project-index__state-panel project-index__state-panel--after">
+                    <h2 class="project-index__state-label">AFTER</h2>
+                    <ol class="impact-list"><li><span>01</span><h3>예상 운영비 월 2~3만원 수준</h3></li><li><span>02</span><h3>한 화면에서 모든 계정의 리뷰를 관리</h3></li></ol>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+
+          <div id="project-detail-5" class="project-index__detail" role="region" aria-labelledby="project-toggle-5" aria-hidden="true">
+            <div class="project-index__detail-inner">
+              <header class="project-index__detail-heading">
+                <div class="project-index__detail-title"><strong>업무 프로세스 개선</strong></div>
+                <div class="project-index__detail-actions"><button class="project-detail-close" type="button" aria-label="업무 프로세스 개선 상세 내용 닫기">닫기<span class="project-detail-close-key" aria-hidden="true">(ESC)</span></button></div>
+              </header>
+              <div class="project-index__detail-content project-index__detail-content--process">
+                <section class="project-index__state project-index__state--process-case" aria-label="사례 1">
+                  <div class="project-index__state-panel project-index__state-panel--before">
+                    <h2 class="project-index__state-label">사례 1 · BEFORE</h2>
+                    <div class="process-cases"><ol class="ui-note-list ui-note-list--numbered"><li>필요한 정보를 화면에서 직접 확인</li><li>내용을 엑셀에 직접 기입</li><li>30분~2시간 소요</li></ol></div>
+                  </div>
+                  <div class="project-index__state-panel project-index__state-panel--after">
+                    <h2 class="project-index__state-label">사례 1 · AFTER</h2>
+                    <div class="process-cases"><ol class="ui-note-list ui-note-list--numbered"><li>필요한 정보를 자동으로 수집</li><li>원하는 형식으로 저장 가능</li><li>버튼 클릭 1회, 약 10초 만에 완료</li></ol></div>
+                  </div>
+                </section>
+                <section class="project-index__state project-index__state--process-case" aria-label="사례 2">
+                  <div class="project-index__state-panel project-index__state-panel--before">
+                    <h2 class="project-index__state-label">사례 2 · BEFORE</h2>
+                    <div class="process-cases"><ol class="ui-note-list ui-note-list--numbered"><li>상품 정보 수정 시 불필요한 반복 입력 발생</li><li>30분~1시간 소요</li></ol></div>
+                  </div>
+                  <div class="project-index__state-panel project-index__state-panel--after">
+                    <h2 class="project-index__state-label">사례 2 · AFTER</h2>
+                    <div class="process-cases"><ol class="ui-note-list ui-note-list--numbered"><li>불필요한 단계와 중복 입력 제거</li><li>직관적인 UI 제공</li><li>10~15분으로 단축</li></ol></div>
+                  </div>
+                </section>
+              </div>
             </div>
           </div>
         </section>
-
-        <section class="slide" id="page-5" data-page="5" aria-label="카페24 리뷰 앱 개발">
-          <div class="slide__content">
-            <header class="slide-heading">
-              <h2>카페24 리뷰 앱 개발</h2>
-            </header>
-
-            <div class="comparison comparison--simple">
-              <article class="compare-panel compare-panel--before impact-panel">
-                <span class="panel-badge">Before</span>
-                <ol class="impact-list standard-number-list">
-                  <li class="impact-item"><div><h3>리뷰 앱 이용료 월 약 50만원</h3></div></li>
-                  <li class="impact-item"><div><h3>계정별 리뷰 관리로 과정 복잡</h3></div></li>
-                </ol>
-              </article>
-
-              <div class="change-arrow" aria-hidden="true"><span><img src="arrow.png" alt="" /></span></div>
-
-              <article class="compare-panel compare-panel--after impact-panel">
-                <span class="panel-badge">After</span>
-                <ol class="impact-list standard-number-list">
-                  <li class="impact-item"><div><h3>예상 운영비 월 2~3만원 수준</h3></div></li>
-                  <li class="impact-item"><div><h3>실무 중심 UI/UX로 효율화</h3></div></li>
-                </ol>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="slide" id="page-6" data-page="6" aria-label="업무 프로세스 개선">
-          <div class="slide__content">
-            <header class="slide-heading">
-              <h2>업무 프로세스 개선</h2>
-            </header>
-
-            <div class="case-list">
-              <article class="case-row">
-                <div class="case-card case-card--before">
-                  <span class="panel-badge">Before</span>
-                  <ol class="point-list standard-number-list"><li><h3>필요한 정보를 화면에서 직접 확인</h3></li><li><h3>확인한 내용을 다시 수기로 작성</h3></li><li><h3>1회 작업에 약 30분 ~ 2시간 소요</h3></li></ol>
-                </div>
-                <div class="case-transition"><strong>사례 1</strong><div class="change-arrow" aria-hidden="true"><span><img src="arrow.png" alt="" /></span></div></div>
-                <div class="case-card case-card--after">
-                  <span class="panel-badge">After</span>
-                  <ol class="point-list standard-number-list"><li><h3>필요한 정보를 자동으로 수집</h3></li><li><h3>원하는 양식으로 저장 기능 구현</h3></li><li><h3 class="is-emphasis">버튼 클릭 1회, 약 10초 만에 완료</h3></li></ol>
-                </div>
-              </article>
-
-              <article class="case-row">
-                <div class="case-card case-card--before">
-                  <span class="panel-badge">Before</span>
-                  <ol class="point-list standard-number-list"><li><h3>상품 정보 수정 단계가 불필요하게 많음</h3></li><li><h3>화면 이동과 반복 입력이 지속 발생</h3></li><li><h3>1회 작업에 약 30분~1시간 소요</h3></li></ol>
-                </div>
-                <div class="case-transition"><strong>사례 2</strong><div class="change-arrow" aria-hidden="true"><span><img src="arrow.png" alt="" /></span></div></div>
-                <div class="case-card case-card--after">
-                  <span class="panel-badge">After</span>
-                  <ol class="point-list standard-number-list"><li><h3>불필요한 단계와 중복 입력 제거</h3></li><li><h3>실무 흐름에 맞춰 UI/UX 개선</h3></li><li><h3 class="is-emphasis">작업시간 10~15분으로 단축</h3></li></ol>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-
-
-        
       </div>
     </main>
 
-    <div class="page-status" aria-hidden="true">
-      <span class="page-status__current">1</span><span class="page-status__mouse"><i></i></span><span>6</span>
-    </div>
-
-    <p class="scroll-hint" aria-hidden="true"><span class="scroll-hint__mouse"><i></i></span><span>SCROLL</span></p>
-
-    <noscript><p class="noscript-message">페이지 이동을 사용하려면 JavaScript를 활성화해 주세요.</p></noscript>
+    <noscript><p class="noscript-message">상세 내용을 사용하려면 JavaScript를 활성화해 주세요.</p></noscript>
   </body>
 </html>
