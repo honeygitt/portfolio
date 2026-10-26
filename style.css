@@ -112,6 +112,12 @@ body.is-ready .slide__content {
   transition: all ease 0.3s;
   will-change: transform, opacity;
 }
+
+.project-index__item--hidden,
+.project-index__detail--hidden {
+  display: none;
+}
+
 .project-index__row::before {
   content:"";
   position: absolute;

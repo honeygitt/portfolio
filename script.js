@@ -1,9 +1,9 @@
 const projectIndex = document.querySelector(".project-index");
-const projectItems = [...document.querySelectorAll(".project-index__item:not([hidden])")];
-const projectDetailButtons = [...document.querySelectorAll(".project-index__item:not([hidden]) .project-index__detail-toggle")];
-const projectTitleTriggers = [...document.querySelectorAll(".project-index__item:not([hidden]) .project-index__title")];
-const projectDetails = [...document.querySelectorAll(".project-index__detail:not([hidden])")];
-const projectDetailCloseButtons = [...document.querySelectorAll(".project-index__detail:not([hidden]) .project-detail-close")];
+const projectItems = [...document.querySelectorAll(".project-index__item:not(.project-index__item--hidden)")];
+const projectDetailButtons = [...document.querySelectorAll(".project-index__item:not(.project-index__item--hidden) .project-index__detail-toggle")];
+const projectTitleTriggers = [...document.querySelectorAll(".project-index__item:not(.project-index__item--hidden) .project-index__title")];
+const projectDetails = [...document.querySelectorAll(".project-index__detail:not(.project-index__detail--hidden)")];
+const projectDetailCloseButtons = [...document.querySelectorAll(".project-index__detail:not(.project-index__detail--hidden) .project-detail-close")];
 const inventoryUi = document.querySelector(".inventory-ui--after");
 const inventoryFilterButtons = [...document.querySelectorAll(".filter-chip[data-product-filter]")];
 const inventoryProductRows = [...document.querySelectorAll(".inventory-product-row")];
