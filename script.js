@@ -1,8 +1,8 @@
 const projectIndex = document.querySelector(".project-index");
-const projectItems = [...document.querySelectorAll(".project-index__item")];
-const projectDetailButtons = [...document.querySelectorAll(".project-index__detail-toggle")];
-const projectDetails = [...document.querySelectorAll(".project-index__detail")];
-const projectDetailCloseButtons = [...document.querySelectorAll(".project-detail-close")];
+const projectItems = [...document.querySelectorAll(".project-index__item:not([hidden])")];
+const projectDetailButtons = [...document.querySelectorAll(".project-index__item:not([hidden]) .project-index__detail-toggle")];
+const projectDetails = [...document.querySelectorAll(".project-index__detail:not([hidden])")];
+const projectDetailCloseButtons = [...document.querySelectorAll(".project-index__detail:not([hidden]) .project-detail-close")];
 const inventoryUi = document.querySelector(".inventory-ui--after");
 const inventoryFilterButtons = [...document.querySelectorAll(".filter-chip[data-product-filter]")];
 const inventoryProductRows = [...document.querySelectorAll(".inventory-product-row")];
