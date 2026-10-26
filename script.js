@@ -1,6 +1,7 @@
 const projectIndex = document.querySelector(".project-index");
 const projectItems = [...document.querySelectorAll(".project-index__item:not([hidden])")];
 const projectDetailButtons = [...document.querySelectorAll(".project-index__item:not([hidden]) .project-index__detail-toggle")];
+const projectTitleTriggers = [...document.querySelectorAll(".project-index__item:not([hidden]) .project-index__title")];
 const projectDetails = [...document.querySelectorAll(".project-index__detail:not([hidden])")];
 const projectDetailCloseButtons = [...document.querySelectorAll(".project-index__detail:not([hidden]) .project-detail-close")];
 const inventoryUi = document.querySelector(".inventory-ui--after");
@@ -53,8 +54,10 @@ function applyInventoryFilter(filterType) {
 function setProjectDetailState(button, isExpanded) {
   const item = button.closest(".project-index__item");
   const detail = document.getElementById(button.getAttribute("aria-controls"));
+  const titleTrigger = item?.querySelector(".project-index__title");
 
   button.setAttribute("aria-expanded", String(isExpanded));
+  titleTrigger?.setAttribute("aria-expanded", String(isExpanded));
   item?.classList.toggle("is-expanded", isExpanded);
   detail?.classList.toggle("is-expanded", isExpanded);
   detail?.setAttribute("aria-hidden", String(!isExpanded));
@@ -127,6 +130,18 @@ function openProjectDetails(button) {
 
 projectDetailButtons.forEach((button) => {
   button.addEventListener("click", () => openProjectDetails(button));
+});
+
+projectTitleTriggers.forEach((titleTrigger) => {
+  const button = titleTrigger.closest(".project-index__item")?.querySelector(".project-index__detail-toggle");
+  if (!button) return;
+
+  titleTrigger.addEventListener("click", () => openProjectDetails(button));
+  titleTrigger.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    openProjectDetails(button);
+  });
 });
 
 projectDetailCloseButtons.forEach((button) => {

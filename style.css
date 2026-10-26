@@ -150,6 +150,16 @@ body.is-ready .slide__content {
   transition: transform 180ms ease;
 }
 
+.project-index__title {
+  display: inline;
+  cursor: pointer;
+}
+
+.project-index__title:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
 .project-index__row:hover strong {
   transform: translateX(8px);
 }
