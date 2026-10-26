@@ -941,7 +941,7 @@ body.has-project-expanded .cover h1,
 
 .impact-list {
   display: grid;
-  align-content: center;
+  align-content: start;
   gap: 20px;
   height: 100%;
 }
