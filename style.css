@@ -285,15 +285,6 @@ body.has-project-expanded .cover h1,
   line-height: 1.2;
 }
 
-.project-index__detail-meta {
-  display: block;
-  margin-top: 6px;
-  color: #d6d6d6;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.4;
-}
-
 .project-detail-scroll-hint {
   display: inline-grid;
   grid-column: 2;
@@ -770,7 +761,7 @@ body.has-project-expanded .cover h1,
   display: block;
   margin-top: 4px;
   color: #5f5f5f;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.5;
 }
@@ -1172,11 +1163,6 @@ body.has-project-expanded .cover h1,
 
   .project-index__detail-title strong {
     font-size: 24px;
-  }
-
-  .project-index__detail-meta {
-    margin-top: 3px;
-    font-size: 11px;
   }
 
   .project-index__state-panel {
