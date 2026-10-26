@@ -1002,7 +1002,7 @@ body.has-project-expanded .cover h1,
 
 .process-cases {
   display: grid;
-  align-content: center;
+  align-content: start;
   gap: 16px;
   min-height: 100%;
 }
