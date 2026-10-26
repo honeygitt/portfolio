@@ -1,6 +1,8 @@
 :root {
   color-scheme: dark;
   font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --state-before-accent: #e53935;
+  --state-after-accent: #2563eb;
 }
 
 * {
@@ -246,14 +248,16 @@ body.has-project-expanded .cover h1,
 }
 
 .project-index__detail-heading {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
   min-width: 0;
 }
 
 .project-index__detail-title {
+  grid-column: 1;
+  grid-row: 1;
   min-width: 0;
   text-align: left;
 }
@@ -263,6 +267,64 @@ body.has-project-expanded .cover h1,
   font-size: 40px;
   font-weight: 900;
   line-height: 1.2;
+}
+
+.project-detail-scroll-hint {
+  display: inline-grid;
+  grid-column: 2;
+  grid-row: 1;
+  justify-items: center;
+  gap: 4px;
+  color: #bdbdbd;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.project-detail-scroll-hint__mouse {
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 24px;
+  border: 1px solid currentColor;
+  border-radius: 10px;
+}
+
+.project-detail-scroll-hint__mouse span {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  width: 2px;
+  height: 6px;
+  border-radius: 2px;
+  background: currentColor;
+  animation: project-detail-scroll-wheel 1500ms ease-in-out infinite;
+}
+
+.project-detail-scroll-hint__label {
+  display: block;
+}
+
+@keyframes project-detail-scroll-wheel {
+  0%,
+  25% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+
+  40%,
+  65% {
+    opacity: 1;
+    transform: translate(-50%, 7px);
+  }
+
+  80%,
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
 }
 
 .project-index__detail-content {
@@ -315,6 +377,14 @@ body.has-project-expanded .cover h1,
   border-bottom:1px solid #111;
 }
 
+.project-index__state-label-accent--before {
+  color: var(--state-before-accent);
+}
+
+.project-index__state-label-accent--after {
+  color: var(--state-after-accent);
+}
+
 .project-index__state-panel > :not(.project-index__state-label) {
   min-width: 0;
   min-height: 0;
@@ -335,7 +405,6 @@ body.has-project-expanded .cover h1,
   line-height: 1.55;
 }
 
-.numbered-list,
 .impact-list,
 .ui-note-list {
   margin: 0;
@@ -343,56 +412,14 @@ body.has-project-expanded .cover h1,
   list-style: none;
 }
 
-.numbered-list {
-  display: grid;
-  align-content: center;
-  gap: 12px;
-  min-height: 100%;
-  counter-reset: project-number;
+.project-index__state-panel--before .ui-note-list--numbered li::before,
+.project-index__state-panel--before .impact-list span {
+  background: var(--state-before-accent);
 }
 
-.numbered-list > li {
-  display: grid;
-  grid-template-columns: 38px minmax(0, 1fr);
-  gap: 14px;
-  align-items: start;
-  padding: 16px 0;
-  border-bottom: 1px solid #c8c8c8;
-  counter-increment: project-number;
-}
-
-.numbered-list > li:last-child {
-  border-bottom: 0;
-}
-
-.numbered-list > li::before {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  color: #fff;
-  background: #303030;
-  content: counter(project-number, decimal-leading-zero);
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.numbered-list h3,
-.numbered-list p {
-  margin: 0;
-}
-
-.numbered-list h3 {
-  margin-bottom: 5px;
-  font-size: 22px;
-  font-weight: 800;
-}
-
-.numbered-list p {
-  color: #5f5f5f;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.5;
+.project-index__state-panel--after .ui-note-list--numbered li::before,
+.project-index__state-panel--after .impact-list span {
+  background: var(--state-after-accent);
 }
 
 .inventory-ui,
@@ -627,7 +654,7 @@ body.has-project-expanded .cover h1,
 .expiry-detail td {
   height: 30px;
   background: #fff;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 #project-detail-2 > div > div > section:nth-child(2) > div > div > div.table-shell.table-shell--inventory-app > table > tbody > tr.expiry-detail-row > td > div > table {
@@ -677,6 +704,9 @@ body.has-project-expanded .cover h1,
   padding: 16px 0;
   border-bottom: 1px solid #c8c8c8;
   counter-increment: project-number;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.55;
 }
 
 .ui-note-list--numbered li:last-child {
@@ -695,6 +725,19 @@ body.has-project-expanded .cover h1,
   font-size: 12px;
   font-weight: 800;
   color:#fff;
+}
+
+.sales-summary-list__content {
+  min-width: 0;
+}
+
+.sales-summary-list__description {
+  display: block;
+  margin-top: 4px;
+  color: #5f5f5f;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
 .site-grid {
@@ -986,9 +1029,12 @@ body.has-project-expanded .cover h1,
 
 .project-index__detail-actions {
   display: flex;
+  grid-column: 3;
+  grid-row: 1;
   align-items: center;
   gap: 8px;
   flex: 0 0 auto;
+  justify-self: end;
 }
 
 .project-detail-close-key {
@@ -1107,25 +1153,6 @@ body.has-project-expanded .cover h1,
     gap: 14px;
   }
 
-  .numbered-list > li {
-    grid-template-columns: 30px minmax(0, 1fr);
-    gap: 8px;
-    padding: 9px 0;
-  }
-
-  .numbered-list > li::before {
-    width: 28px;
-    height: 28px;
-  }
-
-  .numbered-list h3 {
-    font-size: 16px;
-  }
-
-  .numbered-list p {
-    font-size: 11px;
-  }
-
   .table-shell table {
     min-width: 520px;
   }
@@ -1151,12 +1178,19 @@ body.has-project-expanded .cover h1,
     grid-template-columns: 30px minmax(0, 1fr);
     gap: 8px;
     padding: 9px 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.55;
   }
 
   .ui-note-list--numbered li::before {
     top: auto;
     width: 28px;
     height: 28px;
+  }
+
+  .sales-summary-list__description {
+    font-size: 12px;
   }
 
   .site-grid {
@@ -1222,7 +1256,7 @@ body.has-project-expanded .cover h1,
   }
 
   .command-input-ui__prompt {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .command-input-ui input {
@@ -1275,7 +1309,7 @@ body.has-project-expanded .cover h1,
   }
 
   .project-detail-close-key {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
@@ -1286,5 +1320,11 @@ body.has-project-expanded .cover h1,
   .project-index__detail {
     transition-duration: 1ms !important;
     transition-delay: 0ms !important;
+  }
+
+  .project-detail-scroll-hint__mouse span {
+    animation: none;
+    opacity: 1;
+    transform: translate(-50%, 7px);
   }
 }

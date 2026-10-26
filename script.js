@@ -12,7 +12,10 @@ const inventoryEmptyRow = document.querySelector(".inventory-empty-row");
 let activeProjectButton = null;
 let activeProjectCloseButton = null;
 let closeButtonFocusTimer;
+let projectSwitchTimer;
 let isInventoryExpiryExpanded = true;
+
+const PROJECT_SWITCH_DELAY = 700;
 
 function updateInventoryExpiryState() {
   const sunscreenRow = inventoryProductRows.find((row) => row.classList.contains("sunscreen-row"));
@@ -62,6 +65,8 @@ function closeProjectDetails({ restoreFocus = true } = {}) {
 
   const buttonToFocus = activeProjectButton;
   clearTimeout(closeButtonFocusTimer);
+  clearTimeout(projectSwitchTimer);
+  projectSwitchTimer = undefined;
   setProjectDetailState(activeProjectButton, false);
 
   projectItems.forEach((item) => {
@@ -75,6 +80,21 @@ function closeProjectDetails({ restoreFocus = true } = {}) {
   activeProjectCloseButton = null;
 
   if (restoreFocus) buttonToFocus.focus({ preventScroll: true });
+  return true;
+}
+
+function switchProjectDetails(direction) {
+  if (!activeProjectButton || projectSwitchTimer) return false;
+
+  const activeIndex = projectDetailButtons.indexOf(activeProjectButton);
+  const nextButton = projectDetailButtons[activeIndex + direction];
+  if (!nextButton) return false;
+
+  openProjectDetails(nextButton);
+  projectSwitchTimer = window.setTimeout(() => {
+    projectSwitchTimer = undefined;
+  }, PROJECT_SWITCH_DELAY);
+
   return true;
 }
 
@@ -112,6 +132,17 @@ projectDetailButtons.forEach((button) => {
 projectDetailCloseButtons.forEach((button) => {
   button.addEventListener("click", () => closeProjectDetails());
 });
+
+window.addEventListener(
+  "wheel",
+  (event) => {
+    if (!activeProjectButton || event.ctrlKey || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+
+    event.preventDefault();
+    switchProjectDetails(event.deltaY > 0 ? 1 : -1);
+  },
+  { passive: false }
+);
 
 inventoryFilterButtons.forEach((button) => {
   button.addEventListener("click", () => applyInventoryFilter(button.dataset.productFilter));
