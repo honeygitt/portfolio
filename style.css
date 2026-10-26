@@ -687,7 +687,8 @@ body.has-project-expanded .cover h1,
 }
 
 .ui-note-list--numbered {
-  align-content: center;
+  align-content: start;
+  align-items: start;
   gap: 12px;
   padding: 0;
   border: 0;
