@@ -9,7 +9,7 @@
     />
     <title>자동화 프로젝트 포트폴리오</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="style.css?v=20260809-23" />
+    <link rel="stylesheet" href="style.css?v=20261027-02" />
     <script src="script.js?v=20260809-11" defer></script>
   </head>
 
@@ -139,16 +139,15 @@
                       </div>
                       <div class="table-shell table-shell--inventory-app">
                         <table>
-                          <thead><tr><th>제품명</th><th>유형</th><th>재고</th><th>발주기준</th><th>발주</th><th>판매량</th><th aria-label="상세 보기"></th></tr></thead>
+                          <thead><tr><th>제품명</th><th>유형</th><th>카테고리</th><th>현재고</th><th>발주기준</th><th>판매량</th></tr></thead>
                           <tbody>
                             <tr class="inventory-product-row sunscreen-row" data-product-type="본품">
-                              <td><div class="product-cell"><img src="썬크림.png" alt="썬크림" /><strong>썬크림</strong></div></td><td><span class="product-type">본품</span></td><td><strong>6,571</strong></td><td>500</td><td><span class="order-state">-</span></td><td><div class="sales-periods"><span><small>1일</small><b>24</b></span><span><small>7일</small><b>168</b></span></div></td><td><button type="button" class="inventory-expiry-toggle" aria-expanded="true" aria-label="썬크림 유통기한별 재고 숨기기"><span aria-hidden="true"></span></button></td>
+                              <td><div class="product-cell"><img src="썬크림.png" alt="썬크림" /><strong>썬크림</strong></div></td><td><span class="product-type">본품</span></td><td><span class="inventory-category">스킨케어</span></td><td><strong class="inventory-stock">6,571</strong></td><td><span class="inventory-threshold">500</span></td><td><div class="sales-periods"><span><small>1일</small><b>24</b></span><span><small>7일</small><b>168</b></span><span><small>30일</small><b>720</b></span><span><small>90일</small><b>2,160</b></span></div></td>
                             </tr>
-                            <tr class="expiry-detail-row"><td colspan="7"><div class="expiry-detail"><table><thead><tr><th>유통기한</th><th>총 재고</th><th>가용</th><th>불용</th></tr></thead><tbody><tr><td>2027-09-07</td><td>1,571</td><td>1,552</td><td>19</td></tr><tr><td>2028-12-10</td><td>5,000</td><td>5,000</td><td>0</td></tr></tbody></table></div></td></tr>
-                            <tr class="inventory-product-row" data-product-type="본품"><td><div class="product-cell"><img src="스킨.png" alt="스킨" /><strong>스킨</strong></div></td><td><span class="product-type">본품</span></td><td><strong>2,485</strong></td><td>600</td><td><span class="order-state">-</span></td><td><div class="sales-periods"><span><small>1일</small><b>31</b></span><span><small>7일</small><b>214</b></span></div></td><td></td></tr>
-                            <tr class="inventory-product-row" data-product-type="본품"><td><div class="product-cell"><img src="파우더.png" alt="파우더" /><strong>파우더</strong></div></td><td><span class="product-type">본품</span></td><td><strong>2,061</strong></td><td>800</td><td><span class="order-state">-</span></td><td><div class="sales-periods"><span><small>1일</small><b>27</b></span><span><small>7일</small><b>189</b></span></div></td><td></td></tr>
-                            <tr class="inventory-product-row" data-product-type="사은품"><td><div class="product-cell"><img src="쇼핑백.png" alt="쇼핑백" /><strong>쇼핑백</strong></div></td><td><span class="product-type">사은품</span></td><td><strong>120</strong></td><td>200</td><td><span class="order-state need-order">필요</span></td><td><div class="sales-periods"><span><small>1일</small><b>8</b></span><span><small>7일</small><b>54</b></span></div></td><td></td></tr>
-                            <tr class="inventory-empty-row" hidden><td colspan="7">해당 유형의 제품이 없습니다.</td></tr>
+                            <tr class="inventory-product-row" data-product-type="본품"><td><div class="product-cell"><img src="스킨.png" alt="스킨" /><strong>스킨</strong></div></td><td><span class="product-type">본품</span></td><td><span class="inventory-category">스킨케어</span></td><td><strong class="inventory-stock">2,485</strong></td><td><span class="inventory-threshold">600</span></td><td><div class="sales-periods"><span><small>1일</small><b>31</b></span><span><small>7일</small><b>214</b></span><span><small>30일</small><b>930</b></span><span><small>90일</small><b>2,790</b></span></div></td></tr>
+                            <tr class="inventory-product-row" data-product-type="본품"><td><div class="product-cell"><img src="파우더.png" alt="파우더" /><strong>파우더</strong></div></td><td><span class="product-type">본품</span></td><td><span class="inventory-category">메이크업</span></td><td><strong class="inventory-stock">2,061</strong></td><td><span class="inventory-threshold">800</span></td><td><div class="sales-periods"><span><small>1일</small><b>27</b></span><span><small>7일</small><b>189</b></span><span><small>30일</small><b>810</b></span><span><small>90일</small><b>2,430</b></span></div></td></tr>
+                            <tr class="inventory-product-row inventory-product-row--low-stock" data-product-type="사은품"><td><div class="product-cell"><img src="쇼핑백.png" alt="쇼핑백" /><strong>쇼핑백</strong></div></td><td><span class="product-type">사은품</span></td><td><span class="inventory-category">기타</span></td><td><strong class="inventory-stock">120</strong></td><td><span class="inventory-threshold">200</span></td><td><div class="sales-periods"><span><small>1일</small><b>8</b></span><span><small>7일</small><b>54</b></span><span><small>30일</small><b>240</b></span><span><small>90일</small><b>720</b></span></div></td></tr>
+                            <tr class="inventory-empty-row" hidden><td colspan="6">해당 유형의 제품이 없습니다.</td></tr>
                           </tbody>
                         </table>
                       </div>

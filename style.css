@@ -515,24 +515,80 @@ body.has-project-expanded .cover h1,
 
 
 
+.inventory-ui--after .table-shell--inventory-app {
+  overflow: auto;
+  border: 1px solid #dfe5ec;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.inventory-ui--after .table-shell--inventory-app table {
+  min-width: 628px;
+  border: 0;
+}
+
+.table-shell--inventory-app th,
+.project-index__state-panel--after .table-shell--inventory-app th {
+  height: 42px;
+  padding: 0 8px;
+  border-bottom: 1px solid #dfe5ec;
+  color: #64748b;
+  background: #f8fafc;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: left;
+}
+
+.table-shell--inventory-app td,
+.project-index__state-panel--after .table-shell--inventory-app td {
+  height: 94px;
+  padding: 10px 8px;
+  border-bottom: 1px solid #e4e9ef;
+  color: #0f172a;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  white-space: normal;
+}
+
+.table-shell--inventory-app tbody tr:last-child td {
+  border-bottom: 0;
+}
+
 .table-shell--inventory-app th:nth-child(1),
 .table-shell--inventory-app td:nth-child(1) {
-  width: 110px;
+  width: 145px;
+  text-align: center;
 }
 
 .table-shell--inventory-app th:nth-child(2),
 .table-shell--inventory-app td:nth-child(2) {
-  width: 64px;
+  width: 70px;
+  text-align: center;
+}
+
+.table-shell--inventory-app th:nth-child(3),
+.table-shell--inventory-app td:nth-child(3) {
+  width: 75px;
+}
+
+.table-shell--inventory-app th:nth-child(4),
+.table-shell--inventory-app td:nth-child(4) {
+  width: 70px;
+  text-align: center;
+}
+
+.table-shell--inventory-app th:nth-child(5),
+.table-shell--inventory-app td:nth-child(5) {
+  width: 80px;
+  text-align: center;
 }
 
 .table-shell--inventory-app th:nth-child(6),
 .table-shell--inventory-app td:nth-child(6) {
-  width: 90px;
-}
-
-.table-shell--inventory-app th:nth-child(7),
-.table-shell--inventory-app td:nth-child(7) {
-  width: 42px;
+  width: 168px;
+  text-align: center;
 }
 
 .inventory-filters {
@@ -566,70 +622,90 @@ body.has-project-expanded .cover h1,
   background: #303030;
 }
 
-.product-cell {
+.table-shell--inventory-app .product-cell {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   min-width: 0;
   text-align: left;
 }
 
-.product-cell img {
+.table-shell--inventory-app .product-cell img {
   flex: 0 0 auto;
-  width: 34px;
-  height: 34px;
-  border-radius: 4px;
-  background: #ededed;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #f4f1eb;
   object-fit: contain;
 }
 
-.product-cell strong {
+.table-shell--inventory-app .product-cell strong {
   overflow: hidden;
+  color: #0f172a;
+  font-size: 15px;
+  font-weight: 800;
   text-overflow: ellipsis;
 }
 
-.product-type {
+.table-shell--inventory-app .product-type {
   display: inline-grid;
   place-items: center;
-  min-height: 23px;
-  padding: 0 7px;
-  border: 1px solid #bdbdbd;
+  min-height: 26px;
+  padding: 0 13px;
+  border: 0;
   border-radius: 999px;
-  background: #f0f0f0;
-  font-size: 11px;
+  color: #2563eb;
+  background: #eff6ff;
+  font-size: 14px;
+  font-weight: 800;
 }
 
-.need-order {
-  color:#b12b2b;
-  font-weight: 900;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+.inventory-category {
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 700;
 }
 
-.sales-periods {
+.inventory-stock,
+.inventory-threshold {
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.inventory-product-row--low-stock .product-cell strong,
+.inventory-product-row--low-stock .inventory-stock {
+  color: #ef2222;
+}
+
+.table-shell--inventory-app .sales-periods {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3px;
+  grid-template-columns: 70px 90px;
+  justify-content: end;
+  column-gap: 20px;
+  row-gap: 20px;
 }
 
-.sales-periods span,
-.sales-periods small,
-.sales-periods b {
-  display: block;
+.table-shell--inventory-app .sales-periods span {
+  display: grid;
+  grid-template-columns: 21px 35px;
+  align-items: center;
+  column-gap: 10px;
+  padding: 0;
+  background: transparent;
+  text-align: right;
 }
 
-.sales-periods span {
-  padding: 3px;
-  background: #eeeeee;
+.table-shell--inventory-app .sales-periods small {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 700;
 }
 
-.sales-periods small {
-  color: #696969;
-  font-size: 9px;
-}
-
-.sales-periods b {
-  font-size: 11px;
+.table-shell--inventory-app .sales-periods b {
+  color: #0f172a;
+  font-size: 15px;
+  font-weight: 800;
 }
 
 .inventory-expiry-toggle {
